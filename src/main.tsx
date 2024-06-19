@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import AuthProvider from "./security/AuthProvider";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
 
 //Observe the "!"" below, which tells TypeScript that you are certain document.getElementById("root")
 //will not return null,
