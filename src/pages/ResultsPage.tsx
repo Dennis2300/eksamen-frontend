@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import AddResult from "../components/AddResult";
+
 interface Result {
   id: number;
   resultType: string;
@@ -29,7 +31,7 @@ export default function ResultsPage() {
 
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="bg-base-200">
         <div className="overflow-x-auto">
           <div className="text-center">
             <h1 className="text-center text-8xl mb-10">Alle Resultater</h1>
@@ -66,6 +68,9 @@ export default function ResultsPage() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="my-32">
+          <AddResult />
         </div>
       </div>
     </div>
