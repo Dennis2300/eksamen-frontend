@@ -17,10 +17,14 @@ export default function AdminPage() {
               et a id nisi.
             </p>
             <button className="btn btn-primary mx-3 text-3xl">
-                <NavLink to="/participants">Se Deltager</NavLink>
+                <NavLink to="/participants">Alle Deltager</NavLink>
             </button>
-            <button className="btn btn-primary mx-3 text-3xl">Get Started</button>
-            <button className="btn btn-primary mx-3 text-3xl">Get Started</button>
+            <button className="btn btn-primary mx-3 text-3xl">
+                <NavLink to="/results">Alle Resultater</NavLink>
+            </button>
+            <button className="btn btn-primary mx-3 text-3xl">
+                <NavLink to="/disciplines">Alle Discipliner</NavLink>
+            </button>
           </div>
         </div>
       </div>

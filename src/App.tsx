@@ -5,6 +5,7 @@ import Home from "./Home";
 import Login from "./security/Login";
 import AdminPage from "./pages/AdminPage";
 import ParticipantsPage from "./pages/ParticipantsPage";
+import DisciplinesPage from "./pages/DisciplinesPage";
 import "./App.css";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/participants" element={<ParticipantsPage />} />
+        <Route path="/disciplines" element={<DisciplinesPage />} />
 
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
