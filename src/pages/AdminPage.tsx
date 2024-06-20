@@ -16,11 +16,11 @@ export default function AdminPage() {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-primary">
-                <NavLink to="/participants">Deltager</NavLink>
+            <button className="btn btn-primary mx-3 text-3xl">
+                <NavLink to="/participants">Se Deltager</NavLink>
             </button>
-            <button className="btn btn-primary">Get Started</button>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary mx-3 text-3xl">Get Started</button>
+            <button className="btn btn-primary mx-3 text-3xl">Get Started</button>
           </div>
         </div>
       </div>

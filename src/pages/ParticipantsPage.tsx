@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 // Define the Participant type
 interface Participant {
@@ -24,9 +25,17 @@ export default function ParticipantsPage() {
     <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="overflow-x-auto">
+          <div className="text-center">
+            <h1 className="text-center text-8xl mb-10">Alle Deltager</h1>
+            <button>
+              <NavLink to="/admin" className="btn btn-primary">
+                Tilbage til Admin side
+              </NavLink>
+            </button>
+          </div>
           <table className="table">
             {/* head */}
-            <thead className="text-5xl">
+            <thead className="text-4xl text-center">
               <tr>
                 <th></th>
                 <th>Deltager ID</th>
