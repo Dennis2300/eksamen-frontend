@@ -56,16 +56,6 @@ export default function NavHeader() {
               </NavLink>
             </li>
             <li className="mx-5">
-              <NavLink to="/about" className="btn">
-                About
-              </NavLink>
-            </li>
-            <li className="mx-5">
-              <NavLink to="/contact" className="btn">
-                Contact
-              </NavLink>
-            </li>
-            <li className="mx-5">
               <NavLink to="/login" className="btn">
                 Login
               </NavLink>
