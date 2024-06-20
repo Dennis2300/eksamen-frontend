@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import AddParticipants from "../components/AddParticipants";
+
 // Define the Participant type
 interface Participant {
   id: number;
@@ -14,16 +16,30 @@ interface Participant {
 export default function ParticipantsPage() {
   const [participants, setParticipants] = useState<Participant[]>([]);
 
-  useEffect(() => {
+  const fetchParticipants = () => {
     fetch("http://localhost:8080/api/participants")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch participants");
+        }
+        return response.json();
+      })
       .then((data) => setParticipants(data))
       .catch((error) => console.error("Error fetching participants:", error));
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchParticipants();
+  }, []); // Fetch participants on component mount
+
+  const handleRefetch = () => {
+    fetchParticipants(); // Refetch participants
+  };
+
 
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="bg-base-200">
         <div className="overflow-x-auto">
           <div className="text-center">
             <h1 className="text-center text-8xl mb-10">Alle Deltager</h1>
@@ -32,8 +48,11 @@ export default function ParticipantsPage() {
                 Tilbage til Admin side
               </NavLink>
             </button>
+            <button className="btn btn-primary ml-3" onClick={handleRefetch}>
+              Opdater Liste
+            </button>
           </div>
-          <table className="table">
+          <table className="table overflow-auto">
             {/* head */}
             <thead className="text-4xl text-center">
               <tr>
@@ -44,6 +63,7 @@ export default function ParticipantsPage() {
                 <th>Etternavn</th>
                 <th>Køn</th>
                 <th>Alder</th>
+                <th></th>
               </tr>
             </thead>
             <tbody className="text-3xl text-center">
@@ -64,6 +84,9 @@ export default function ParticipantsPage() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="my-32">
+          <AddParticipants />
         </div>
       </div>
     </div>
