@@ -10,7 +10,7 @@ export default function AdminPage() {
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>
-            <h1 className="text-5xl font-bold">Velokkem til Administrator siden</h1>
+            <h1 className="text-5xl font-bold">Velkommen til Administrator siden</h1>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
