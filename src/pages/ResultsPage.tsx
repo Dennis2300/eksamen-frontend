@@ -3,11 +3,28 @@ import { NavLink } from "react-router-dom";
 
 import AddResult from "../components/AddResult";
 
+interface Discipline {
+  id: number;
+  disciplineName: string;
+}
+
+interface Participant {
+  id: number;
+  firstName: string;
+  lastName: string;
+  age: number;
+  gender: string;
+  club: string;
+  disciplines: Discipline[];
+}
+
 interface Result {
   id: number;
   resultType: string;
   date: string;
   result: number;
+  participant: Participant;
+  discipline: Discipline;
 }
 
 const formatDate = (dateString: string): string => {
@@ -22,12 +39,25 @@ const formatDate = (dateString: string): string => {
 export default function ResultsPage() {
   const [results, setResults] = useState<Result[]>([]);
 
-  useEffect(() => {
+  async function fetchResults() {
     fetch("http://localhost:8080/api/results")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch results");
+        }
+        return response.json();
+      })
       .then((data) => setResults(data))
       .catch((error) => console.error("Error fetching results:", error));
+  }
+
+  useEffect(() => {
+    fetchResults();
   }, []);
+
+  const handleRefetch = () => {
+    fetchResults();
+  };
 
   return (
     <div>
@@ -40,6 +70,9 @@ export default function ResultsPage() {
                 Tilbage til Admin side
               </NavLink>
             </button>
+            <button className="btn btn-primary ml-3" onClick={handleRefetch}>
+              Opdater Liste
+            </button>
           </div>
           <table className="table">
             {/* head */}
@@ -47,7 +80,9 @@ export default function ResultsPage() {
               <tr>
                 <th></th>
                 <th>Resultat ID</th>
-                <th>Disciplin</th>
+                <th>Discipline</th>
+                <th>Deltager Navn</th>
+                <th>Resultat Type</th>
                 <th>Resultat</th>
                 <th>Dato</th>
               </tr>
@@ -57,6 +92,8 @@ export default function ResultsPage() {
                 <tr key={result.id}>
                   <td></td>
                   <td>{result.id}</td>
+                  <td>{result.discipline.disciplineName}</td>
+                  <td>{result.participant.firstName} {result.participant.lastName}</td>
                   <td>{result.resultType}</td>
                   <td>{result.result}</td>
                   <td>{formatDate(result.date)}</td>

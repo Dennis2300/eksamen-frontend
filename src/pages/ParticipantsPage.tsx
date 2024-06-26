@@ -25,7 +25,7 @@ export default function ParticipantsPage() {
   const [participants, setParticipants] = useState<Participant[]>([]);
 
   //Function to fetch participants from the backend
-  const fetchParticipants = () => {
+  async function fetchParticipants() {
     fetch("http://localhost:8080/api/participants")
       .then((response) => {
         if (!response.ok) {
@@ -35,7 +35,7 @@ export default function ParticipantsPage() {
       })
       .then((data) => setParticipants(data))
       .catch((error) => console.error("Error fetching participants:", error));
-  };
+  }
 
   //We use the useEffect hook to fetch participants when the component mounts
   useEffect(() => { // This is a side effect
